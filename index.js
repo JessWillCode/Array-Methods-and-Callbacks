@@ -1,6 +1,6 @@
 const { fifaData } = require('./fifa.js')
 
-// ⚽️ M  V P ⚽️ //
+// ⚽️ M V P ⚽️ //
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Practice accessing data by console.log-ing the following pieces of data note, you may want to filter the data first 😉*/
@@ -15,6 +15,11 @@ Practice accessing data by console.log-ing the following pieces of data note, yo
 
 //(e) Winner of 2014 world cup final */
 
+const aHome = fifaData.filter(function(team) {
+   if(fifaData["year"] === 2014){
+    return team["Home Team Name"];
+   }
+});
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use getFinals to do the following:
