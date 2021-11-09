@@ -1,3 +1,4 @@
+const { isTemplateElement } = require('@babel/types');
 const { fifaData } = require('./fifa.js')
 
 // ⚽️ M V P ⚽️ //
@@ -15,11 +16,9 @@ Practice accessing data by console.log-ing the following pieces of data note, yo
 
 //(e) Winner of 2014 world cup final */
 
-const aHome = fifaData.filter(function(team) {
-   if(fifaData["year"] === 2014){
-    return team["Home Team Name"];
-   }
-});
+const aHome = fifaData.filter(function(item) {
+   return item.year === 2014;
+   });
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use getFinals to do the following:
@@ -29,8 +28,8 @@ Use getFinals to do the following:
 hint - you should be looking at the stage key inside of the objects
 */
 
-function getFinals(/* code here */) {
-   /* code here */
+function getFinals(data) {
+   data.map(item => item.stage === "Final");
 }
 
 
