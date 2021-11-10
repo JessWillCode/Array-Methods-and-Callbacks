@@ -52,8 +52,9 @@ Use the higher-order function called getYears to do the following:
 //2 params- array and getfinalscb
 //filter then map the filtered data (like big pops)
 
-function getYears(/* code here */) {
-    /* code here */
+function getYears(array, getfinalscb) {
+   const finalsYears = array.map(getfinalscb => getfinalscb.Year);
+    return finalsYears;
 }
 
 
@@ -69,8 +70,15 @@ Use the higher-order function getWinners to do the following:
 
 //map with if else conditional (if home team goal > away team goal then we want home team name, else we want the away team name)
 
-function getWinners(/* code here */) {
-    /* code here */
+function getWinners(array, getfinalscb) {
+    const winners = array.map(item => {
+        if(item["Home Team Goals"] > item["Away Team Goals"]){
+            return item["Home Team Name"];
+        } else {
+            return item["Away Team Name"];
+        }
+    });
+    return winners;
 }
 
 
@@ -90,8 +98,14 @@ hint: the strings returned need to exactly match the string in step 5.
 
 //map using index and item map over one array and grab each item and then index to grab the item in the other array
 
-function getWinnersByYear(/* code here */) {
-    /* code here */
+function getWinnersByYear(array, getfinalscb, getyearscb, getwinnerscb) {
+    const winners = getwinnerscb(array, getfinalscb);
+    const years = getyearscb(array, getfinalscb);
+    
+    const yearWinners = array.map(function(item, index){
+       return `In ${years[index]}, ${winners[index]} won the world cup!`;
+    });
+    return yearWinners;
 }
 
 
@@ -110,8 +124,11 @@ Use the higher order function getAverageGoals to do the following:
 
 //use reduce to add all the goals of the home and away teams and then divide by the length of the array- round to 2 decimal places - look up .toFixed()
 
-function getAverageGoals(/* code here */) {
-   /* code here */
+function getAverageGoals(getfinalscb) {
+   const averageGoals = getfinalscb.reduce(function(average, item){
+       return average + item["Home Team Goals"] + item["Away Team Goals"]
+   }, 0);
+   return (averageGoals / getfinalscb.length).toFixed(2);
 }
 
 
